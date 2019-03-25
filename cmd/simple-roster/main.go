@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/micklove/simple-roster/internal/app/model"
+)
 
 func main() {
-  fmt.Println("Hello World3")
+	//note := model.CreateNote("New Note")
+	user := model.User{"mick", "love", "micklove", make([]model.Note, 0)}
+	user.AddNote(model.CreateNote("Hello World"))
+	pretty, _ := json.MarshalIndent(user, "", "\t")
+	fmt.Println(string(pretty))
 }
