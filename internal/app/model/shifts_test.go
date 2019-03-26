@@ -2,6 +2,8 @@ package model
 
 import (
 	"fmt"
+	"reflect"
+	"runtime"
 	"testing"
 	"time"
 )
@@ -10,9 +12,9 @@ import (
 var DefaultShifts Shifts
 var DefaultFirstShift *Shift
 
-const displayNamePrefix = "rocket"
-const firstNamePrefix = "ronnie"
-const lastNamePrefix = "osullivan"
+const displayNamePrefix = "maestro"
+const firstNamePrefix = "stephen"
+const lastNamePrefix = "hendry"
 
 func init() {
 	DefaultShifts = make([]Shift, 0)
@@ -42,11 +44,11 @@ func TestShifts_FilterByDisplayName(t *testing.T) {
 }
 
 func TestShifts_FilterByFirstName(t *testing.T) {
-	filterShiftsBySearchName(t, "hello", User.HasFirstName)
+	filterShiftsBySearchName(t, firstNamePrefix, User.HasFirstName)
 }
 
 func TestShifts_FilterByLastName(t *testing.T) {
-	filterShiftsBySearchName(t, DefaultLastName, User.HasFirstName)
+	filterShiftsBySearchName(t, lastNamePrefix, User.HasLastName)
 }
 
 func filterShiftsBySearchName(t *testing.T, searchNamePrefix string, f func(User, string) bool) {
@@ -57,14 +59,15 @@ func filterShiftsBySearchName(t *testing.T, searchNamePrefix string, f func(User
 	actualFilteredShiftsLength := len(filteredShifts)
 
 	if actualFilteredShiftsLength != expectedFilterCount {
-		t.Errorf("error expected filtered list of size [%v], got [%v]",
-			expectedFilterCount, actualFilteredShiftsLength)
+		actualFuncName := runtime.FuncForPC(reflect.ValueOf(f).Pointer()).Name()
+		t.Errorf("error filter with predicate [%v], expected filtered list of size [%v], got [%v]",
+			actualFuncName, expectedFilterCount, actualFilteredShiftsLength)
 	}
 }
 
 //Create a list, where half of the list have a different first, last name
 func createListOfShifts(t *testing.T, shiftCount int) Shifts {
-	var shifts Shifts = make([]Shift, 0)
+	var shifts Shifts = make([]Shift, 0, shiftCount)
 	for i := 0; i < shiftCount; i++ {
 		shift := CreateShift(time.Now(), time.Now().Add(time.Minute*2), *createDefaultUser())
 		if i%2 == 0 {
