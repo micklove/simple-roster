@@ -8,7 +8,7 @@ import (
 
 func main() {
 	//note := model.CreateNote("New Note")
-	user := model.User{"mick", "love", "micklove", make([]model.Note, 0)}
+	user := model.User{1234, "mick", "love", "micklove", make([]model.Note, 0)}
 	user.AddNote(model.CreateNote("Hello World"))
 	pretty, _ := json.MarshalIndent(user, "", "\t")
 	fmt.Println(string(pretty))

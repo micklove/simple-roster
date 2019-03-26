@@ -7,21 +7,30 @@ import (
 )
 
 const defaultString string = "some note"
+const multiLineString = `First line
+Second line`
+
+func TestCreateNote(t *testing.T) {
+	note := CreateNote(defaultString)
+	if decoded, _ := note.DecodeNote(); decoded != defaultString {
+		t.Errorf("Note contains incorrect text, expected [%v], was [%v]", defaultString, note.Note)
+	}
+}
+
+func TestCreateNoteMultiLine(t *testing.T) {
+	note := CreateNote(multiLineString)
+	if decoded, _ := note.DecodeNote(); decoded != multiLineString {
+		t.Errorf("Note contains incorrect text, expected [%v], was [%v]", multiLineString, note.Note)
+	}
+}
 
 func Test_NotesAdd(t *testing.T) {
 	var notes Notes = make([]Note, 0)
 	notes, _ = notes.AddNote(CreateNote(defaultString))
-	validateNotesLength(t, notes, 1)
+	validateSliceLength(t, notes, "Shifts", 1)
 
 	notes, _ = notes.AddNote(CreateNote(defaultString))
-	validateNotesLength(t, notes, 2)
-}
-
-func Test_NoteInit(t *testing.T) {
-	note := CreateNote(defaultString)
-	if note.Note != defaultString {
-		t.Errorf("Note contains incorrect text, expected [%v], was [%v]", defaultString, note.Note)
-	}
+	validateSliceLength(t, notes, "Shifts", 2)
 }
 
 func Test_NoteHasRecentlyCreatedTimeStamp(t *testing.T) {
@@ -33,7 +42,8 @@ func Test_NoteHasRecentlyCreatedTimeStamp(t *testing.T) {
 	fmt.Printf("Elapsed [%v]\n", elapsed.Seconds())
 	expectedMaxTimeDiffInSeconds := 5.0
 	if elapsed.Seconds() > expectedMaxTimeDiffInSeconds {
-		t.Errorf("Expected Note to contain time stamp created in last [%v] seconds, was [%v] seconds", expectedMaxTimeDiffInSeconds, elapsed.Seconds())
+		t.Errorf("Expected Note to contain time stamp created in last [%v] seconds, was [%v] seconds",
+			expectedMaxTimeDiffInSeconds, elapsed.Seconds())
 	}
 }
 
@@ -41,10 +51,4 @@ func createDefaultNotes() Notes {
 	note := CreateNote(defaultString)
 	notes := Notes{*note}
 	return notes
-}
-
-func validateNotesLength(t *testing.T, notes Notes, expectedNoteLength int) {
-	if len(notes) != expectedNoteLength {
-		t.Errorf("Expected Notes of count [%v], was [%v]", expectedNoteLength, len(notes))
-	}
 }
