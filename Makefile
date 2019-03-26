@@ -42,11 +42,11 @@ clean: ## Remove all artifacts
 
 test: clean build  ## Run all unit tests
 	@printf "\n===================\nExecuting $@\n"
-	@go test ./...
+	@go test -v ./...
 
 # See https://blog.golang.org/cover
 cover: clean build ## Run coverage report and output to browser
 	-rm $(COVERAGE_OUTPUT)
-	@go test --coverprofile=$(COVERAGE_OUTPUT) ./...
+	@go test -v --coverprofile=$(COVERAGE_OUTPUT) ./...
 	@go tool cover -html=$(COVERAGE_OUTPUT)
 
