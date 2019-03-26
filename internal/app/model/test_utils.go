@@ -12,7 +12,7 @@ func validateSliceLength(t *testing.T, obj interface{}, typeName string, expecte
 	if reflect.TypeOf(obj).Kind() == reflect.Slice {
 		genericSlice := reflect.ValueOf(obj)
 
-		t.Logf("struct length [%v]", genericSlice.Len())
+		//t.Logf("struct length [%v]", genericSlice.Len())
 
 		if genericSlice.Len() != expectedNoteLength {
 			t.Errorf("Expected %v of count [%v], was [%v]", typeName, expectedNoteLength, genericSlice.Len())

@@ -7,11 +7,11 @@ import (
 const DefaultRosterName = "Blah"
 
 var DefaultRoster *Roster
-var DefaultShift *Shift
+var DefaultTestShift *Shift
 
 func init() {
-	DefaultRoster = CreateRoster(DefaultRosterName)
-	DefaultShift = createDefaultShift()
+	DefaultRoster, _ = CreateRoster(DefaultRosterName)
+	DefaultTestShift = createDefaultShift()
 }
 
 func TestRoster_CreateRoster(t *testing.T) {
@@ -24,10 +24,10 @@ func TestRoster_CreateRoster(t *testing.T) {
 }
 
 func TestRoster_AddShift(t *testing.T) {
-	var shifts, _ = DefaultRoster.AddShift(DefaultShift)
+	var shifts, _ = DefaultRoster.AddShift(DefaultTestShift)
 	validateSliceLength(t, shifts, "DefaultRoster.Shifts", 1)
 
-	shifts, _ = DefaultRoster.AddShift(DefaultShift)
+	shifts, _ = DefaultRoster.AddShift(DefaultTestShift)
 	validateSliceLength(t, shifts, "DefaultRoster.Shifts", 2)
 	validateSliceLength(t, DefaultRoster.Shifts, "DefaultRoster.Shifts", 2)
 }

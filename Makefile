@@ -6,7 +6,7 @@ ALL_PLATFORMS := linux/amd64 linux/arm linux/arm64 linux/ppc64le linux/s390x
 PROJECT_NAME:=simple-roster
 PROJECT_PKG_PATH:=github.com/micklove/$(PROJECT_NAME)
 MAIN=cmd/$(PROJECT_NAME)/main.go
-
+COVERAGE_OUTPUT:=coverage.out
 # TODO - use this pattern for multi os builds
 example-build: 
 	@echo "building GOOS:$(GOOS) GOARCH=$(GOARCH)" $*
@@ -44,4 +44,9 @@ test: clean build  ## Run all unit tests
 	@printf "\n===================\nExecuting $@\n"
 	@go test ./...
 
+# See https://blog.golang.org/cover
+cover: clean build ## Run coverage report and output to browser
+	-rm $(COVERAGE_OUTPUT)
+	@go test --coverprofile=$(COVERAGE_OUTPUT) ./...
+	@go tool cover -html=$(COVERAGE_OUTPUT)
 

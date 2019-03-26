@@ -9,6 +9,7 @@ const DefaultFirstName = "ronnie"
 const DefaultLastName = "osullivan"
 const DefaultDisplayName = "Rocket Ronnie"
 const DefaultNoteString = "Hello World"
+const DefaultAvatarUrl = "http://localhost:8080/ronnie.jpg"
 
 var DefaultUser *User
 
@@ -31,33 +32,41 @@ func Test_UserAddNote(t *testing.T) {
 	validateDefaultUser(t, user, 1)
 }
 
+func Test_UserAddInvalidNote(t *testing.T) {
+	user := createDefaultUser()
+	if err := user.AddNote(nil); err == nil {
+		t.Errorf("error expected to fail when adding nil note to User")
+	}
+}
+
 func TestUser_HasDisplayName(t *testing.T) {
-	matchNameField(t, DefaultUser.HasDisplayName, DefaultDisplayName, "DisplayName")
+	matchNameField(t, *DefaultUser, User.HasDisplayName, DefaultDisplayName, "DisplayName")
 }
 
 func TestUser_HasFirstName(t *testing.T) {
-	matchNameField(t, DefaultUser.HasFirstName, DefaultFirstName, "FirstName")
+	matchNameField(t, *DefaultUser, User.HasFirstName, DefaultFirstName, "FirstName")
 }
 
 func TestUser_HasLastName(t *testing.T) {
-	matchNameField(t, DefaultUser.HasLastName, DefaultLastName, "LastName")
+	matchNameField(t, *DefaultUser, User.HasLastName, DefaultLastName, "LastName")
 }
 
 func TestUser_MatchesAnyName(t *testing.T) {
-	matchNameField(t, DefaultUser.MatchesAnyName, DefaultFirstName, "FirstName")
-	matchNameField(t, DefaultUser.MatchesAnyName, DefaultLastName, "LastName")
-	matchNameField(t, DefaultUser.MatchesAnyName, DefaultDisplayName, "DisplayName")
+	matchNameField(t, *DefaultUser, User.MatchesAnyName, DefaultFirstName, "FirstName")
+	matchNameField(t, *DefaultUser, User.MatchesAnyName, DefaultLastName, "LastName")
+	matchNameField(t, *DefaultUser, User.MatchesAnyName, DefaultDisplayName, "DisplayName")
 }
 
 //f func(shift Shift) bool
-func matchNameField(t *testing.T, f func(s string) bool, searchString string, searchField string) {
-	if !f(searchString) {
+func matchNameField(t *testing.T, user User, f func(User, string) bool, searchString string, searchField string) {
+	if !f(user, searchString) {
 		t.Errorf("Expected search to match Name Field %v prefix of [%v]", searchField, searchString)
 	}
 }
 
 func createDefaultUser() *User {
-	return CreateUser(DefaultFirstName, DefaultLastName, DefaultDisplayName)
+	user, _ := CreateUser(DefaultFirstName, DefaultLastName, DefaultDisplayName, DefaultAvatarUrl)
+	return user
 }
 
 func validateDefaultUser(t *testing.T, user *User, expectedNotesLength int) {
