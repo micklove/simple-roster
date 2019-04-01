@@ -6,13 +6,11 @@ import (
 	"time"
 )
 
-//TODO - base64
 type Note struct {
 	Date time.Time `json:"date"`
 	Note string    `json:"note"`
 }
 
-//TODO - Encode
 func CreateNote(note string) *Note {
 	encoded := base64.StdEncoding.EncodeToString([]byte(note))
 

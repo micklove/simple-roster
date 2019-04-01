@@ -1,17 +1,18 @@
 package model
 
 import (
-	"fmt"
 	"time"
 )
 
 type Schedule struct {
 	ID     int64  `json:"id"`
 	Name   string `json:"name"`
-	Shifts Shifts `json:"shifts"`
+	Shifts `json:"shifts"`
 }
 
 //TODO
-func GetShifts(startTime time.Time, endTime time.Time) {
-	fmt.Println("Roster")
+func (schedule *Schedule) GetShifts(startTime time.Time, endTime time.Time) Shifts {
+	return schedule.Shifts
 }
+
+//LOOK at fill struct from visual studio go

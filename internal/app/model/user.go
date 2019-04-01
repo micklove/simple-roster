@@ -70,9 +70,9 @@ func (user *User) AddNote(note *Note) error {
 	return nil
 }
 
-//TODO - provide predicate matchers, for start time / end time
+//TODO - provide shift predicate matchers, for start time / end time
 
-//User Matchers - for Filter methods
+//User Matchers - for FilterByUser methods
 func (user User) HasDisplayName(searchNamePrefix string) bool {
 	return strings.HasPrefix(user.DisplayName, searchNamePrefix)
 }

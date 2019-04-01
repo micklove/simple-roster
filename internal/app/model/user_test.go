@@ -4,17 +4,10 @@ import (
 	"testing"
 )
 
-//public - used in other tests
-const DefaultFirstName = "ronnie"
-const DefaultLastName = "osullivan"
-const DefaultDisplayName = "Rocket Ronnie"
-const DefaultNoteString = "Hello World"
-const DefaultAvatarUrl = "http://localhost:8080/ronnie.jpg"
-
 var DefaultUser *User
 
 func init() {
-	DefaultUser = createDefaultUser()
+	DefaultUser = CreateDefaultUser()
 }
 
 func Test_UserCreate(t *testing.T) {
@@ -22,7 +15,7 @@ func Test_UserCreate(t *testing.T) {
 }
 
 func Test_UserAddNote(t *testing.T) {
-	user := createDefaultUser()
+	user := CreateDefaultUser()
 	note := CreateNote(DefaultNoteString)
 	err := user.AddNote(note)
 
@@ -33,7 +26,7 @@ func Test_UserAddNote(t *testing.T) {
 }
 
 func Test_UserAddInvalidNote(t *testing.T) {
-	user := createDefaultUser()
+	user := CreateDefaultUser()
 	if err := user.AddNote(nil); err == nil {
 		t.Errorf("error expected to fail when adding nil note to User")
 	}
@@ -62,11 +55,6 @@ func matchNameField(t *testing.T, user User, f func(User, string) bool, searchSt
 	if !f(user, searchString) {
 		t.Errorf("Expected search to match Name Field %v prefix of [%v]", searchField, searchString)
 	}
-}
-
-func createDefaultUser() *User {
-	user, _ := CreateUser(DefaultFirstName, DefaultLastName, DefaultDisplayName, DefaultAvatarUrl)
-	return user
 }
 
 func validateDefaultUser(t *testing.T, user *User, expectedNotesLength int) {

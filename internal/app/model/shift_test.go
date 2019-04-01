@@ -5,17 +5,14 @@ import (
 	"time"
 )
 
-//public for use in other tests
-var DefaultStartTime time.Time
-var DefaultEndTime time.Time
-var DefaultShift *Shift
-
 const expectedMinutesBetween = 60
+
+var rosterId = "some-roster-id"
 
 func init() {
 	DefaultStartTime = time.Now().Add(time.Hour)
 	DefaultEndTime = DefaultStartTime.Add(time.Minute * expectedMinutesBetween)
-	DefaultShift = createDefaultShift()
+	DefaultShift = createDefaultShift(rosterId)
 }
 
 func TestCreateShift(t *testing.T) {
@@ -47,7 +44,7 @@ func TestShift_Duration(t *testing.T) {
 func TestShift_InvalidStartOrEndTime(t *testing.T) {
 	invalidStart := time.Now().Add(time.Minute * 10)
 	invalidEnd := time.Now()
-	shift := CreateShift(invalidStart, invalidEnd, *createDefaultUser())
+	shift := CreateShift(rosterId, invalidStart, invalidEnd, *CreateDefaultUser())
 	if _, err := shift.GetShiftDuration(); err == nil {
 		t.Errorf("expected error when endTime [%v] is before startTime [%v]", invalidEnd, invalidStart)
 	}
@@ -66,8 +63,4 @@ func TestShift_AddInvalidNote(t *testing.T) {
 	if err := DefaultShift.AddNote(nil); err == nil {
 		t.Errorf("error adding note [%v] to shift", nil)
 	}
-}
-
-func createDefaultShift() *Shift {
-	return CreateShift(DefaultStartTime, DefaultEndTime, *createDefaultUser())
 }
