@@ -16,7 +16,7 @@ func Test_UserCreate(t *testing.T) {
 
 func Test_UserAddNote(t *testing.T) {
 	user := CreateDefaultUser()
-	note := CreateNote(DefaultNoteString)
+	note := NewNote(DefaultNoteString)
 	err := user.AddNote(note)
 
 	if err != nil {

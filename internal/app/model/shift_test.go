@@ -44,7 +44,8 @@ func TestShift_Duration(t *testing.T) {
 func TestShift_InvalidStartOrEndTime(t *testing.T) {
 	invalidStart := time.Now().Add(time.Minute * 10)
 	invalidEnd := time.Now()
-	shift := CreateShift(rosterId, invalidStart, invalidEnd, *CreateDefaultUser())
+	userRole := "kitchen"
+	shift := CreateShift(rosterId, invalidStart, invalidEnd, *CreateDefaultUser(), userRole)
 	if _, err := shift.GetShiftDuration(); err == nil {
 		t.Errorf("expected error when endTime [%v] is before startTime [%v]", invalidEnd, invalidStart)
 	}

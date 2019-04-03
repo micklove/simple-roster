@@ -17,6 +17,7 @@ var DefaultShift *Shift
 const DefaultFirstName = "ronnie"
 const DefaultLastName = "osullivan"
 const DefaultDisplayName = "Rocket Ronnie"
+const DefaultUserRole = "snooker player"
 
 const DefaultNoteString = "Hello World"
 const DefaultAvatarUrl = "http://localhost:8080/ronnie.jpg"
@@ -75,17 +76,17 @@ func createListOfShiftsWithDifferentNames(t *testing.T, rosterId string, count i
 func CreateShifts(rosterId string, shiftCount int) Shifts {
 	var shifts Shifts = make([]Shift, 0, shiftCount)
 	for i := 0; i < shiftCount; i++ {
-		shift := CreateShift(rosterId, time.Now(), time.Now().Add(time.Hour*24), *CreateDefaultUser())
+		shift := CreateShift(rosterId, time.Now(), time.Now().Add(time.Hour*24), *CreateDefaultUser(), DefaultUserRole)
 		shifts, _ = shifts.AddShift(shift)
 	}
 	return shifts
 }
 
 func CreateDefaultUser() *User {
-	user, _ := CreateUser(DefaultFirstName, DefaultLastName, DefaultDisplayName, DefaultAvatarUrl)
+	user, _ := NewUser(DefaultFirstName, DefaultLastName, DefaultDisplayName, DefaultAvatarUrl)
 	return user
 }
 
 func createDefaultShift(rosterId string) *Shift {
-	return CreateShift(rosterId, DefaultStartTime, DefaultEndTime, *CreateDefaultUser())
+	return CreateShift(rosterId, DefaultStartTime, DefaultEndTime, *CreateDefaultUser(), DefaultUserRole)
 }

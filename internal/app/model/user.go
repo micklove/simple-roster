@@ -18,46 +18,36 @@ type User struct {
 	Avatar      *url.URL `json:"avatar"`
 }
 
-/*
-	if id, err := ksuid.NewRandomWithTime(time.Now()); err != nil {
-		fmt.Printf("error getting new UUID for Roster ID, err [%v]", err)
-		return nil, err
-	} else {
-		return &Roster{
-			ID:     id.String(),
-			Name:   name,
-			Shifts: make([]Shift, 0),
-		}, nil
-	}
-*/
-func CreateUser(firstName string, lastName string, displayName string, avatar string) (*User, error) {
+func NewUser(firstName string, lastName string, displayName string, avatar string) (*User, error) {
 	avatarUrl, _ := getUrlForAvatar(avatar)
-	if id, err := ksuid.NewRandomWithTime(time.Now()); err != nil {
+	var id ksuid.KSUID
+	var err error
+	if id, err = ksuid.NewRandomWithTime(time.Now()); err != nil {
 		fmt.Printf("error getting new UUID for User ID, err [%v]", err)
 		return nil, err
-	} else {
-		return &User{
-			ID:          id.String(),
-			FirstName:   firstName,
-			LastName:    lastName,
-			DisplayName: displayName,
-			Notes:       make([]Note, 0),
-			Avatar:      avatarUrl,
-		}, err
 	}
+	return &User{
+		ID:          id.String(),
+		FirstName:   firstName,
+		LastName:    lastName,
+		DisplayName: displayName,
+		Notes:       make([]Note, 0),
+		Avatar:      avatarUrl,
+	}, err
 }
 
 //TODO - Test
 func getUrlForAvatar(urlStr string) (*url.URL, error) {
 	if len(urlStr) > 0 {
-		if url, err := url.ParseRequestURI(urlStr); err != nil {
+		var parsedUrl *url.URL
+		var err error
+		if parsedUrl, err = url.ParseRequestURI(urlStr); err != nil {
 			return nil, err
-		} else {
-			return url, nil
 		}
-	} else {
-		return nil, nil
+		return parsedUrl, nil
+
 	}
+	return nil, nil
 }
 
 func (user *User) AddNote(note *Note) error {

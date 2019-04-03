@@ -32,7 +32,7 @@ func TestRoster_AddShift(t *testing.T) {
 	validateSliceLength(t, DefaultRoster.Shifts, "DefaultRoster.Shifts", 1)
 
 	shifts, _ = DefaultRoster.AddShift(DefaultTestShift)
-	validateSliceLength(t, shifts, "DefaultRoster.Shifts", 2)
+	validateSliceLength(t, shifts, "shifts", 2)
 	validateSliceLength(t, DefaultRoster.Shifts, "DefaultRoster.Shifts", 2)
 }
 
@@ -94,8 +94,8 @@ func CreateShiftsWithTimeIncrements(count int, rosterId string, initialStartTime
 		}
 		//create some notes, (then overwrite the contents) with the time, to make debugging a bit easier
 		shifts[i].End = shifts[i].Start.Add(incrementsDuration)
-		shifts[i].AddNote(CreateNote("hello"))
-		shifts[i].AddNote(CreateNote("world"))
+		shifts[i].AddNote(NewNote("hello"))
+		shifts[i].AddNote(NewNote("world"))
 		shifts[i].Notes[0].Note = fmt.Sprintf("S: %v", shifts[i].Start)
 		shifts[i].Notes[1].Note = fmt.Sprintf("E: %v", shifts[i].End)
 	}

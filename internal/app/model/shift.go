@@ -16,6 +16,7 @@ type Shift struct {
 	RosterId string    `json:"rosterId"`
 	Start    time.Time `json:"start"`
 	End      time.Time `json:"end"`
+	UserRole string    `json:"userRole"`
 	User     User      `json:"assignee"`
 	Notes    Notes     `json:"notes"`
 }
@@ -27,12 +28,13 @@ type ShiftSummary struct {
 	ETime string    `json:"e_time"`
 }
 
-func CreateShift(rosterId string, start time.Time, end time.Time, user User) *Shift {
+func CreateShift(rosterId string, start time.Time, end time.Time, user User, userRole string) *Shift {
 	return &Shift{
 		RosterId: rosterId,
 		Start:    start,
 		End:      end,
 		User:     user,
+		UserRole: userRole,
 		Notes:    make([]Note, 0),
 	}
 }

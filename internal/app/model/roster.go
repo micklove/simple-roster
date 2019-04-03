@@ -15,17 +15,17 @@ type Roster struct {
 }
 
 func CreateRoster(name string) (*Roster, error) {
-
-	if id, err := ksuid.NewRandomWithTime(time.Now()); err != nil {
+	var id ksuid.KSUID
+	var err error
+	if id, err = ksuid.NewRandomWithTime(time.Now()); err != nil {
 		fmt.Printf("error getting new UUID for Roster ID, err [%v]", err)
 		return nil, err
-	} else {
-		return &Roster{
-			ID:     id.String(),
-			Name:   name,
-			Shifts: make([]Shift, 0),
-		}, nil
 	}
+	return &Roster{
+		ID:     id.String(),
+		Name:   name,
+		Shifts: make([]Shift, 0),
+	}, nil
 }
 
 //Add a shift to the Shifts collection on the Roster
@@ -34,13 +34,14 @@ func CreateRoster(name string) (*Roster, error) {
 //     However, the underlying 'append' method on Shifts returns a copy of the []Shift array
 //      - See See https://golang.org/ref/spec#Struct_types
 func (roster *Roster) AddShift(shift *Shift) (Shifts, error) {
+	var shifts Shifts
+	var err error
 	shift.RosterId = roster.ID
-	if shifts, err := roster.Shifts.AddShift(shift); err != nil {
+	if shifts, err = roster.Shifts.AddShift(shift); err != nil {
 		return shifts, err
-	} else {
-		roster.Shifts = shifts
-		return shifts, nil
 	}
+	roster.Shifts = shifts
+	return shifts, nil
 }
 
 //TODO
