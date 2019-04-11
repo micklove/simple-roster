@@ -22,18 +22,13 @@ func NewNote(note string) *Note {
 
 //So that we can accommodate multi-line notes, the string is base64 encoded on creation, decode
 func (note *Note) DecodeNote() (decoded string, err error) {
-	if decoded, err = decode(note.Note); err != nil {
-		fmt.Printf("decode error [%v]: cannot decode [%v]", err, note.Note)
-		return note.Note, err
-	}
-	return string(decoded), nil
+	return decode(note.Note)
 }
 
 func decode(noteStr string) (string, error) {
 	decoded, err := base64.StdEncoding.DecodeString(noteStr)
 	if err != nil {
-		fmt.Printf("decode error [%v]: cannot decode [%v]", err, decoded)
-		return "", err
+		return "", fmt.Errorf("decode error [%v]: cannot decode [%v]\n", err, noteStr)
 	}
 	return string(decoded), err
 }
@@ -42,7 +37,7 @@ func decode(noteStr string) (string, error) {
 // e.g. To get a base64 string In osx, base64 -i- <<< "hello world"
 func (note *Note) UnmarshalJSON(data []byte) error {
 
-	fmt.Printf("UnmarshalJSON String = [%v]", string(data))
+	//fmt.Printf("UnmarshalJSON String = [%v]\n", string(data))
 	//Unmarshal the type Note to NewNote struct, same fields, no methods (prevents infinite loop on the Unmarshal)
 	aux := &struct {
 		Date time.Time `json:"date"`

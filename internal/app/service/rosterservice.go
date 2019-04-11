@@ -1,6 +1,6 @@
 package service
 
-import "github.com/micklove/simple-roster/api/dao"
+import "github.com/micklove/simple-roster/internal/app/dao"
 
 type RosterService struct {
 	dao.RosterDao

@@ -1,37 +1,49 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
-	"github.com/micklove/simple-roster/api/dao/file"
-	"github.com/micklove/simple-roster/api/service"
-	"github.com/micklove/simple-roster/internal/app"
-	"github.com/micklove/simple-roster/internal/app/model"
+	"flag"
+	"github.com/micklove/simple-roster/internal/app/config"
+	"github.com/micklove/simple-roster/internal/app/dao/file"
+	"github.com/micklove/simple-roster/internal/app/service"
 	"github.com/micklove/simple-roster/internal/pkg/UUID"
+	"github.com/micklove/simple-roster/web"
+	"log"
+	"net/http"
 )
+
+//https://stackoverflow.com/questions/28256923/import-cycle-not-allowed
 
 func main() {
 
-	config := configure()
-	var roster *model.Roster
-	var err error
-	roster, err = config.RosterService.ByID("1JLL9NxeyvqhLnDGcMD8MM20H9p")
+	cfg := configure()
+	handleArgs(cfg)
+	mux := web.Routes(cfg)
 
-	if err != nil {
-		panic("Error getting roster response")
+	// set the ErrorLog field so that the server now uses the custom errorLog logger
+	srv := &http.Server{
+		Addr:     cfg.HttpAddress,
+		ErrorLog: cfg.ErrorLog,
+		Handler:  mux,
 	}
-	pretty, _ := json.MarshalIndent(roster, "", "\t")
-	fmt.Println(string(pretty))
+	log.Fatal(srv.ListenAndServe())
 }
 
 //TODO - use functional options here
 func configure() *app.Config {
-	config := &app.Config{
+	cfg := &app.Config{
 		RosterService: &service.RosterService{},
 	}
 	//Choose the implementation(s)
-	config.Generator = UUID.KSUUIDGenerator{}
-	config.RosterService.RosterDao = dao.FileRosterDao{config}
-	config.FileDaoStoreName = "/Users/lovemi/dev/_projects/go/simple-roster/api/dao/file/rosters-test.json"
-	return config
+	cfg.Generator = UUID.KSUUIDGenerator{}
+	cfg.FileDaoStoreName = "/Users/lovemi/dev/_projects/go/simple-roster/internal/app/dao/file/rosters-test.json"
+	cfg.RosterService.RosterDao = dao.NewFileRosterDao(cfg.FileDaoStoreName)
+	cfg.SetupLogs()
+	return cfg
+}
+
+func handleArgs(cfg *app.Config) {
+	addr := flag.String("addr", "0.0.0.0:8080", "HTTP network address")
+	flag.Parse()
+	log.Printf("param addr = [%v]", *addr)
+	cfg.HttpAddress = *addr
 }

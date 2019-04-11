@@ -10,12 +10,13 @@ import (
 )
 
 type User struct {
-	ID          string   `json:"id"`
-	FirstName   string   `json:"firstName"`
-	LastName    string   `json:"lastName"`
-	DisplayName string   `json:"displayName"`
-	Notes       Notes    `json:"notes"`
-	Avatar      *url.URL `json:"avatar"`
+	ID          string  `json:"id"`
+	FirstName   string  `json:"firstName"`
+	LastName    string  `json:"lastName"`
+	DisplayName string  `json:"displayName"`
+	Notes       Notes   `json:"notes"`
+	AvatarUrl   url.URL `json:"-"` //do not display
+	Avatar      string  `json:"avatar"`
 }
 
 func NewUser(firstName string, lastName string, displayName string, avatar string) (*User, error) {
@@ -32,7 +33,8 @@ func NewUser(firstName string, lastName string, displayName string, avatar strin
 		LastName:    lastName,
 		DisplayName: displayName,
 		Notes:       make([]Note, 0),
-		Avatar:      avatarUrl,
+		AvatarUrl:   *avatarUrl,
+		Avatar:      avatar,
 	}, err
 }
 

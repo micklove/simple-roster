@@ -48,9 +48,10 @@ func Test_NotesAddInvalidNote(t *testing.T) {
 func Test_NodesAddInvalidBase64String(t *testing.T) {
 	note := NewNote("Hello World")
 	note.Note = "gibberish"
-	if _, err := note.DecodeNote(); err == nil {
-		t.Errorf("expected Decode to fail on invalid base64")
+	if _, err := note.DecodeNote(); err != nil {
+		return //Expected Error, ignore
 	}
+	t.Errorf("expected Decode to fail on invalid base64")
 }
 
 func Test_NoteHasRecentlyCreatedTimeStamp(t *testing.T) {
@@ -67,28 +68,30 @@ func Test_NoteHasRecentlyCreatedTimeStamp(t *testing.T) {
 	}
 }
 
-func TestNote_UnmarshalJSON(t *testing.T) {
-	//expectedDateStr := "2019-04-03T16:27:58.111197+11:00"
-	//unmarshalJSONText := `[{
-	//	\\"date\\": \\"2019-04-03T16:27:58.111197+11:00\\",
-	//	\\"note\\": \\"aGVsbG9cbldvcmxkISEK\\"
-	//}]
-	//`
-	//expectedDateStr := time.Now().String()
-	//unmarshalJSONText := fmt.Sprintf(string(`{"date": "%v","note": "aGVsbG9cbldvcmxkISEK"}`), expectedDateStr)
-	//note := &Note{}
-	//
-	////See https://github.com/go-lang-plugin-org/go-lang-idea-plugin/issues/2678
-	//if err := note.UnmarshalJSON([]byte(unmarshalJSONText)); err != nil {
-	//	//msg := fmt.Sprintf("Unexpected UnMarshal error in parsing Note JSON [%v]", unmarshalJSONText)
-	//	msg := "unexpected marshall error"
-	//	t.Error(msg)
-	//	t.Fail() ///explicit fail here , as test was not failing on output with ---FAIL, not sure why
-	//	panic("Exit here, test failed")
-	//}
-	//actualDate := note.Date.String()
-	//if actualDate != expectedDateStr {
-	//	t.Errorf("Expected Note to have expected date [%v] , after UnMarshal", expectedDateStr)
-	//}
-
-}
+//TODO Fix - json object to parse, unmarshalJSONText,  is invalid
+//
+//func TestNote_UnmarshalJSON(t *testing.T) {
+//	//expectedDateStr := "2019-04-03T16:27:58.111197+11:00"
+//	//unmarshalJSONText := `[{
+//	//	\\"date\\": \\"2019-04-03T16:27:58.111197+11:00\\",
+//	//	\\"note\\": \\"aGVsbG9cbldvcmxkISEK\\"
+//	//}]
+//	//`
+//	expectedDateStr := time.Now().String()
+//	unmarshalJSONText := fmt.Sprintf(string(`{"date": "%v","note": "aGVsbG9cbldvcmxkISEK"}`), expectedDateStr)
+//	note := &Note{}
+//
+//	//See https://github.com/go-lang-plugin-org/go-lang-idea-plugin/issues/2678
+//	if err := note.UnmarshalJSON([]byte(unmarshalJSONText)); err != nil {
+//		//msg := fmt.Sprintf("Unexpected UnMarshal error in parsing Note JSON [%v]", unmarshalJSONText)
+//		msg := "unexpected marshall error"
+//		t.Error(msg)
+//		t.Fail() ///explicit fail here , as test was not failing on output with ---FAIL, not sure why
+//		panic("Exit here, test failed")
+//	}
+//	actualDate := note.Date.String()
+//	if actualDate != expectedDateStr {
+//		t.Errorf("Expected Note to have expected date [%v] , after UnMarshal", expectedDateStr)
+//	}
+//
+//}
