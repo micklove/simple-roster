@@ -20,9 +20,13 @@ type User struct {
 }
 
 func NewUser(firstName string, lastName string, displayName string, avatar string) (*User, error) {
-	avatarUrl, _ := getUrlForAvatar(avatar)
-	var id ksuid.KSUID
 	var err error
+	var avatarUrl *url.URL
+	avatarUrl, err = getUrlForAvatar(avatar)
+	if err != nil {
+		return nil, fmt.Errorf("error parsing url [%v] for avatar, error [%v]", avatar, err)
+	}
+	var id ksuid.KSUID
 	if id, err = ksuid.NewRandomWithTime(time.Now()); err != nil {
 		fmt.Printf("error getting new UUID for User ID, err [%v]", err)
 		return nil, err
