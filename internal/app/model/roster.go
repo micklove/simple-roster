@@ -3,9 +3,8 @@ package model
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/segmentio/ksuid"
+	"github.com/micklove/simple-roster/internal/pkg/UUID"
 	"os"
-	"time"
 )
 
 type Roster struct {
@@ -14,15 +13,13 @@ type Roster struct {
 	Shifts `json:"shifts"`
 }
 
-func CreateRoster(name string) (*Roster, error) {
-	var id ksuid.KSUID
-	var err error
-	if id, err = ksuid.NewRandomWithTime(time.Now()); err != nil {
-		fmt.Printf("error getting new UUID for Roster ID, err [%v]", err)
-		return nil, err
+func CreateRoster(name string, uuidGenerator UUID.Generator) (roster *Roster, err error) {
+	var generatedId string
+	if generatedId, err = uuidGenerator.Create(); err != nil {
+		return nil, fmt.Errorf("error getting new UUID to use Roster ID, err [%v]", err)
 	}
 	return &Roster{
-		ID:     id.String(),
+		ID:     generatedId,
 		Name:   name,
 		Shifts: make([]Shift, 0),
 	}, nil

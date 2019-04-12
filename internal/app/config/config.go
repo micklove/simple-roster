@@ -1,7 +1,6 @@
 package app
 
 import (
-	"github.com/micklove/simple-roster/internal/app/service"
 	"github.com/micklove/simple-roster/internal/pkg/UUID"
 	"log"
 	"os"
@@ -9,7 +8,6 @@ import (
 
 type Config struct {
 	UUID.Generator
-	RosterService    *service.RosterService
 	FileDaoStoreName string
 	HttpAddress      string
 	ErrorLog         *log.Logger

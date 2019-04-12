@@ -15,6 +15,5 @@ func (KSUUIDGenerator) Create() (id string, err error) {
 		fmt.Printf("error getting new UUID for User ID, err [%v]", err)
 		return "", err
 	}
-	id = tmpId.String()
 	return tmpId.String(), nil
 }

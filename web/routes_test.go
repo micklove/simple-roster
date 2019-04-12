@@ -6,6 +6,7 @@ import (
 	"github.com/micklove/simple-roster/internal/app/dao"
 	"github.com/micklove/simple-roster/internal/app/model"
 	"github.com/micklove/simple-roster/internal/app/service"
+	"github.com/micklove/simple-roster/internal/pkg/UUID"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -66,22 +67,22 @@ var DefaultEndpoint = "http://localhost:8080/rosters"
 //	validateRosterResponse(t, rr, res, mockRoster.ID, rosterName, mockRoster.Shifts, expectedHttpStatus)
 //
 //}
+var uuidGenerator = &UUID.KSUUIDGenerator{}
 
 func TestRosterById(t *testing.T) {
 	rosterName := "test-roster"
-	mockRoster, _ := model.CreateRoster(rosterName)
-	expectedID := "blahblah"
-	mockRoster.ID = expectedID
+	mockRoster, _ := model.CreateRoster(rosterName, uuidGenerator)
+	expectedID := mockRoster.ID
 
 	endpointWithId := DefaultEndpoint + "?id=" + expectedID
 	rr, res, _ := getDefaultRecorderAndResponse(t, mockRoster, endpointWithId)
 	expectedHttpStatus := http.StatusOK
 	validateRosterResponse(t, rr, res, expectedID, rosterName, mockRoster.Shifts, expectedHttpStatus)
-
 }
 
 func TestRosterNotFoundResponse(t *testing.T) {
-	mockRoster, _ := model.CreateRoster("non existent roster")
+	mockRoster, _ := model.CreateRoster("non existent roster", uuidGenerator)
+	//mockRoster, _ := model.CreateRoster("non existent roster")
 	mockRoster.ID = "NOT FOUND"
 	expectedHttpStatus := http.StatusNotFound
 	rr, res, _ := getDefaultRecorderAndResponse(t, mockRoster, DefaultEndpoint+"?id=JUNK")
@@ -155,14 +156,15 @@ func getDefaultRecorderAndResponse(t *testing.T, roster *model.Roster, url strin
 	mockRosterDao.SetMockResponse(roster)
 
 	cfg := &app.Config{
-		RosterService: &service.RosterService{
-			RosterDao: mockRosterDao,
-		},
 		InfoLog:  log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime),
 		ErrorLog: log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile),
 	}
-
-	handler := Routes(cfg)
+	router := &Router{
+		RosterService: &service.RosterService{
+			RosterDao: mockRosterDao,
+		},
+	}
+	handler := router.Routes(cfg)
 	handler.ServeHTTP(rr, req)
 
 	body, err = ioutil.ReadAll(rr.Body)

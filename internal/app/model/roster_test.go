@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"github.com/micklove/simple-roster/internal/pkg/UUID"
 	"testing"
 	"time"
 )
@@ -10,10 +11,11 @@ const DefaultRosterName = "Blah"
 
 var DefaultRoster *Roster
 var DefaultTestShift *Shift
+var uuidGenerator = &UUID.KSUUIDGenerator{}
 
 func init() {
 
-	DefaultRoster, _ = CreateRoster(DefaultRosterName)
+	DefaultRoster, _ = CreateRoster(DefaultRosterName, uuidGenerator)
 	DefaultTestShift = createDefaultShift(DefaultRoster.ID)
 }
 
@@ -37,7 +39,7 @@ func TestRoster_AddShift(t *testing.T) {
 }
 
 func TestCreateShiftsWithRosterId(t *testing.T) {
-	roster, _ := CreateRoster("blah")
+	roster, _ := CreateRoster("blah", uuidGenerator)
 	shiftCount := 10
 	roster.Shifts = CreateShifts(roster.ID, shiftCount)
 	ValidateShifts(t, roster.Shifts, roster.ID)
@@ -47,7 +49,7 @@ func TestCreateShiftsWithRosterId(t *testing.T) {
 // Act 		- filter by time, next hour
 // Assert   - ensure we have 1 matching shift
 func TestRoster_Filter_SingleMatchingShift(t *testing.T) {
-	roster, _ := CreateRoster("blah")
+	roster, _ := CreateRoster("blah", uuidGenerator)
 	duration := time.Hour * 1
 	shiftCount := 10
 	roster.Shifts = CreateShiftsWithTimeIncrements(shiftCount, roster.ID, time.Now(), duration)
@@ -67,7 +69,7 @@ func TestRoster_Filter_SingleMatchingShift(t *testing.T) {
 // Act 		- filter by time, e.g. next n hours
 // Assert   - ensure we have n matching shifts
 func TestRoster_Filter_MultipleMatchingShifts(t *testing.T) {
-	roster, _ := CreateRoster("blah")
+	roster, _ := CreateRoster("blah", uuidGenerator)
 	duration := time.Hour * 1
 	shiftCount := 10
 	roster.Shifts = CreateShiftsWithTimeIncrements(shiftCount, roster.ID, time.Now(), duration)

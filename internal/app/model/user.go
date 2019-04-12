@@ -15,7 +15,7 @@ type User struct {
 	LastName    string  `json:"lastName"`
 	DisplayName string  `json:"displayName"`
 	Notes       Notes   `json:"notes"`
-	AvatarUrl   url.URL `json:"-"` //do not display
+	AvatarUrl   url.URL `json:"avatarUrl"` //do not display
 	Avatar      string  `json:"avatar"`
 }
 

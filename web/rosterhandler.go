@@ -5,13 +5,15 @@ import (
 	"fmt"
 	"github.com/micklove/simple-roster/internal/app/config"
 	"github.com/micklove/simple-roster/internal/app/model"
+	"github.com/micklove/simple-roster/internal/app/service"
 	"io"
 	"net/http"
 )
 
 type RosterHandler struct {
-	Config      *app.Config
-	ErrorHelper ErrorHelper
+	Config        *app.Config
+	RosterService *service.RosterService
+	ErrorHelper   ErrorHelper
 }
 
 func (rh RosterHandler) get() http.HandlerFunc {
@@ -63,7 +65,7 @@ func (rh *RosterHandler) handleGetById(w http.ResponseWriter, r *http.Request) {
 	}
 	//rosterId := "1JLL9NxeyvqhLnDGcMD8MM20H9p"
 	var roster *model.Roster
-	if roster, err = rh.Config.RosterService.ByID(rosterId); err != nil {
+	if roster, err = rh.RosterService.ByID(rosterId); err != nil {
 		rh.ErrorHelper.serverError(w, err)
 		fmt.Errorf("error retrieving roster id [%v]", rosterId)
 	}
@@ -78,7 +80,7 @@ func (rh *RosterHandler) writeResponse(w http.ResponseWriter, roster *model.Rost
 	response := NewResponse(rosterWrapper)
 	//jr, _ := json.MarshalIndent(response, "", "\t")
 
-	pretty, _ := json.MarshalIndent(response, "", "\t")
+	pretty, _ := json.MarshalIndent(response, "", "  ")
 	respStr := string(pretty)
 	//fmt.Println(respStr)
 	rh.Config.InfoLog.Printf("Response:\n%v\n", respStr)
@@ -98,7 +100,7 @@ func (rh *RosterHandler) handleGet(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var roster *model.Roster
-	if roster, err = rh.Config.RosterService.ByID(rosterId); err != nil {
+	if roster, err = rh.RosterService.ByID(rosterId); err != nil {
 		rh.ErrorHelper.serverError(w, err)
 		fmt.Errorf("error retrieving roster id [%v]", rosterId)
 	}

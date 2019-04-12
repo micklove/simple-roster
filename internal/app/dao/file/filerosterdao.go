@@ -3,6 +3,7 @@ package dao
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/micklove/simple-roster/internal/app/config"
 	"github.com/micklove/simple-roster/internal/app/model"
 	"io/ioutil"
 	"log"
@@ -10,21 +11,20 @@ import (
 
 //TEMP DAO - until persistence layer is chosen
 type FileRosterDao struct {
-	fileDaoStoreName string
+	Config *app.Config
 }
 
-func NewFileRosterDao(fileDaoStoreName string) *FileRosterDao {
+func NewFileRosterDao(cfg *app.Config) *FileRosterDao {
 	return &FileRosterDao{
-		fileDaoStoreName: fileDaoStoreName,
+		Config: cfg,
 	}
 }
 
 func (frd *FileRosterDao) ByID(ID string) (roster *model.Roster, err error) {
-	//roster, _ = model.CreateRoster("MyRoster")
 	var rosters []model.Roster = nil
-	if rosters, err = readFileToJson(frd.fileDaoStoreName); err != nil {
+	if rosters, err = readJsonFileToRosters(frd.Config.FileDaoStoreName, frd.Config.ErrorLog); err != nil {
 		err := fmt.Errorf("Error getting Roster with id [%v] Error [%v] ", ID, err)
-		log.Println(err)
+		frd.Config.ErrorLog.Println(err)
 		return nil, err
 	}
 	for _, roster := range rosters {
@@ -43,19 +43,15 @@ func (frd *FileRosterDao) Save(roster *model.Roster) error {
 	panic("FileRosterDao.Save method not implemented")
 }
 
-func readFileToJson(fileDaoStoreName string) (rosters []model.Roster, err error) {
-	//var rosters []model.Roster
+func readJsonFileToRosters(fileDaoStoreName string, errorLog *log.Logger) (rosters []model.Roster, err error) {
 	var file []byte
-	//var err error = nil
 	if file, err = ioutil.ReadFile(fileDaoStoreName); err != nil {
-
 		err := fmt.Errorf("Error reading file, Error [%v] ", err)
-		log.Println(err)
+		errorLog.Println(err)
 		return nil, err
 	}
 	if err = json.Unmarshal([]byte(file), &rosters); err != nil {
 		return nil, fmt.Errorf("Error parsing [%v] to Roster struct ", fileDaoStoreName)
 	}
 	return rosters, nil
-
 }

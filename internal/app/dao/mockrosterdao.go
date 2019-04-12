@@ -20,7 +20,7 @@ func (rd *MockRosterDao) ByID(ID string) (roster *model.Roster, err error) {
 	if rd.Roster.ID == ID {
 		return rd.Roster, nil
 	}
-	return rd.Roster, nil
+	return nil, nil
 }
 
 func (frd *MockRosterDao) All() []string {

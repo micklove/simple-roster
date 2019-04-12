@@ -1,6 +1,7 @@
 package model
 
 import (
+	"net/url"
 	"testing"
 )
 
@@ -78,4 +79,15 @@ func validateUser(t *testing.T, user *User, expectedFirstName string, expectedLa
 	if len(user.Notes) != expectedNotesLength {
 		t.Errorf("Expected user Notes to have length [%v], was [%v]", expectedNotesLength, len(user.Notes))
 	}
+
+	var parsedUrl *url.URL
+	var err error
+	if parsedUrl, err = url.ParseRequestURI(user.Avatar); err != nil {
+		t.Errorf("Error parsing url [%v]", user.Avatar)
+	}
+
+	if user.AvatarUrl != *parsedUrl {
+		t.Errorf("Avatar urls do not match, want [%v], got [%v]", user.AvatarUrl, parsedUrl)
+	}
+
 }
