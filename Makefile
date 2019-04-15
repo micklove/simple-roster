@@ -10,7 +10,7 @@ COVERAGE_OUTPUT:=coverage.out
 # TODO - use this pattern for multi os builds
 example-build: 
 	@echo "building GOOS:$(GOOS) GOARCH=$(GOARCH)" $*
-
+ADDRESS:=localhost:8181
 build-%:
 	@echo "task:  " $@
 	@$(MAKE) example-build \
@@ -20,7 +20,7 @@ build-%:
 all-build: $(addprefix build-, $(subst /,_, $(ALL_PLATFORMS)))
 
 run: test
-	@go run $(MAIN)
+	@go run $(MAIN) -addr=$(ADDRESS)
 
 #run:
 #	@go run cmd/simple-roster/main.go

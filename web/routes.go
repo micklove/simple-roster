@@ -14,14 +14,15 @@ import (
 
 type Router struct {
 	RosterService *service.RosterService
+	Config        *app.Config
 }
 
-func (router *Router) Routes(cfg *app.Config) http.Handler {
+func (router *Router) Routes() http.Handler {
 	errorHelper := &ErrorHelper{
-		*cfg,
+		*router.Config,
 	}
 	rh := &RosterHandler{
-		Config:        cfg,
+		Config:        router.Config,
 		ErrorHelper:   *errorHelper,
 		RosterService: router.RosterService,
 	}
@@ -29,5 +30,5 @@ func (router *Router) Routes(cfg *app.Config) http.Handler {
 	//mux.HandleFunc("/routes", http.HandlerFunc(GetWithID))
 	mux.HandleFunc("/rosters", rh.byId())
 	mux.HandleFunc("/rosters/", rh.get())
-	return mux
+	return router.logHttpRequest(mux)
 }

@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"github.com/micklove/simple-roster/internal/pkg/UUID"
 	"reflect"
 	"testing"
 	"time"
@@ -83,7 +84,8 @@ func CreateShifts(rosterId string, shiftCount int) Shifts {
 }
 
 func CreateDefaultUser() *User {
-	user, _ := NewUser(DefaultFirstName, DefaultLastName, DefaultDisplayName, DefaultAvatarUrl)
+	var uuidGenerator = &UUID.KSUUIDGenerator{}
+	user, _ := NewUser(DefaultFirstName, DefaultLastName, DefaultDisplayName, DefaultAvatarUrl, uuidGenerator)
 	return user
 }
 

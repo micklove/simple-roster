@@ -3,10 +3,9 @@ package model
 import (
 	"errors"
 	"fmt"
-	"github.com/segmentio/ksuid"
+	"github.com/micklove/simple-roster/internal/pkg/UUID"
 	"net/url"
 	"strings"
-	"time"
 )
 
 type User struct {
@@ -19,20 +18,18 @@ type User struct {
 	Avatar      string  `json:"avatar"`
 }
 
-func NewUser(firstName string, lastName string, displayName string, avatar string) (*User, error) {
-	var err error
+func NewUser(firstName string, lastName string, displayName string, avatar string, uuidGenerator UUID.Generator) (user *User, err error) {
+	var generatedId string
+	if generatedId, err = uuidGenerator.Create(); err != nil {
+		return nil, fmt.Errorf("error getting new UUID for User ID, err [%v]", err)
+	}
 	var avatarUrl *url.URL
 	avatarUrl, err = getUrlForAvatar(avatar)
 	if err != nil {
 		return nil, fmt.Errorf("error parsing url [%v] for avatar, error [%v]", avatar, err)
 	}
-	var id ksuid.KSUID
-	if id, err = ksuid.NewRandomWithTime(time.Now()); err != nil {
-		fmt.Printf("error getting new UUID for User ID, err [%v]", err)
-		return nil, err
-	}
 	return &User{
-		ID:          id.String(),
+		ID:          generatedId,
 		FirstName:   firstName,
 		LastName:    lastName,
 		DisplayName: displayName,

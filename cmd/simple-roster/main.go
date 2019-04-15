@@ -5,7 +5,6 @@ import (
 	"github.com/micklove/simple-roster/internal/app/config"
 	"github.com/micklove/simple-roster/internal/app/dao/file"
 	"github.com/micklove/simple-roster/internal/app/service"
-	"github.com/micklove/simple-roster/internal/pkg/UUID"
 	"github.com/micklove/simple-roster/web"
 	"log"
 	"net/http"
@@ -18,11 +17,12 @@ func main() {
 	cfg := configure()
 	handleArgs(cfg)
 	router := &web.Router{
+		Config: cfg,
 		RosterService: &service.RosterService{
 			RosterDao: dao.NewFileRosterDao(cfg),
 		},
 	}
-	mux := router.Routes(cfg)
+	mux := router.Routes()
 
 	// set the ErrorLog field so that the server now uses the custom errorLog logger
 	srv := &http.Server{
@@ -36,12 +36,8 @@ func main() {
 //TODO - use functional options here
 func configure() *app.Config {
 	cfg := &app.Config{
-		Generator:        UUID.KSUUIDGenerator{},
 		FileDaoStoreName: "/Users/lovemi/dev/_projects/go/simple-roster/internal/app/dao/file/rosters-test.json",
 	}
-	//Choose the implementation(s)
-	//cfg.Generator = UUID.KSUUIDGenerator{}
-	//cfg.FileDaoStoreName = "/Users/lovemi/dev/_projects/go/simple-roster/internal/app/dao/file/rosters-test.json"
 	cfg.SetupLogs()
 	return cfg
 }

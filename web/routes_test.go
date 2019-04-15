@@ -160,11 +160,12 @@ func getDefaultRecorderAndResponse(t *testing.T, roster *model.Roster, url strin
 		ErrorLog: log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile),
 	}
 	router := &Router{
+		Config: cfg,
 		RosterService: &service.RosterService{
 			RosterDao: mockRosterDao,
 		},
 	}
-	handler := router.Routes(cfg)
+	handler := router.Routes()
 	handler.ServeHTTP(rr, req)
 
 	body, err = ioutil.ReadAll(rr.Body)

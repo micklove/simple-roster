@@ -1,13 +1,11 @@
 package app
 
 import (
-	"github.com/micklove/simple-roster/internal/pkg/UUID"
 	"log"
 	"os"
 )
 
 type Config struct {
-	UUID.Generator
 	FileDaoStoreName string
 	HttpAddress      string
 	ErrorLog         *log.Logger
