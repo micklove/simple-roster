@@ -33,6 +33,8 @@ build: clean
 	@echo "build..."
 #	@go build -v -x...
 	@go build  ./...
+	@go mod tidy
+	@go mod verify
 
 clean: ## Remove all artifacts
 	@printf "\n===================\nExecuting $@\n"

@@ -21,6 +21,10 @@ func (router *Router) Routes() http.Handler {
 	errorHelper := &ErrorHelper{
 		*router.Config,
 	}
+	resourceHandler := &ResourceHandler{
+		Config:      router.Config,
+		ErrorHelper: *errorHelper,
+	}
 	rh := &RosterHandler{
 		Config:        router.Config,
 		ErrorHelper:   *errorHelper,
@@ -28,6 +32,7 @@ func (router *Router) Routes() http.Handler {
 	}
 	mux := http.NewServeMux()
 	//mux.HandleFunc("/routes", http.HandlerFunc(GetWithID))
+	mux.HandleFunc("/", resourceHandler.get())
 	mux.HandleFunc("/rosters", rh.byId())
 	mux.HandleFunc("/rosters/", rh.get())
 	return router.logHttpRequest(mux)

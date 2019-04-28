@@ -1,0 +1,704 @@
+[
+  {
+    "id": "1JLL9NxeyvqhLnDGcMD8MM20H9p",
+    "name": "blah",
+    "shifts": [
+      {
+        "rosterId": "1JLL9NxeyvqhLnDGcMD8MM20H9p",
+        "start": "2019-04-03T16:27:58.111176+11:00",
+        "end": "2019-04-03T17:27:58.111176+11:00",
+        "assignee": {
+          "id": "1JLL9IKfYydTSNY9rAh1u6xBXug",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-03T16:27:58.111197+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-03T16:27:58.111197+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "1JLL9NxeyvqhLnDGcMD8MM20H9p",
+        "start": "2019-04-03T17:27:58.111176+11:00",
+        "end": "2019-04-03T18:27:58.111176+11:00",
+        "assignee": {
+          "id": "1JLL9JBww7zqiweJhOjPIP1XarE",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-03T16:27:58.111201+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-03T16:27:58.111205+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "1JLL9NxeyvqhLnDGcMD8MM20H9p",
+        "start": "2019-04-03T18:27:58.111176+11:00",
+        "end": "2019-04-03T19:27:58.111176+11:00",
+        "assignee": {
+          "id": "1JLL9M0bzZ7tmcJ1MI3FdSJhk0y",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-03T16:27:58.111208+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-03T16:27:58.111208+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "1JLL9NxeyvqhLnDGcMD8MM20H9p",
+        "start": "2019-04-03T19:27:58.111176+11:00",
+        "end": "2019-04-03T20:27:58.111176+11:00",
+        "assignee": {
+          "id": "1JLL9IhxKj9UDVlgfeoEWnk1Zi8",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-03T16:27:58.11121+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-03T16:27:58.111211+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "1JLL9NxeyvqhLnDGcMD8MM20H9p",
+        "start": "2019-04-03T20:27:58.111176+11:00",
+        "end": "2019-04-03T21:27:58.111176+11:00",
+        "assignee": {
+          "id": "1JLL9MBvVNox1v1cd5hqFiLoqvv",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-03T16:27:58.111213+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-03T16:27:58.111213+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "1JLL9NxeyvqhLnDGcMD8MM20H9p",
+        "start": "2019-04-03T21:27:58.111176+11:00",
+        "end": "2019-04-03T22:27:58.111176+11:00",
+        "assignee": {
+          "id": "1JLL9OSrgUY1xCOU4FsCXxkBQvn",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-03T16:27:58.111215+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-03T16:27:58.111215+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "1JLL9NxeyvqhLnDGcMD8MM20H9p",
+        "start": "2019-04-03T22:27:58.111176+11:00",
+        "end": "2019-04-03T23:27:58.111176+11:00",
+        "assignee": {
+          "id": "1JLL9LrkhCdCmEfOrfVhnx5IslP",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-03T16:27:58.111218+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-03T16:27:58.111218+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "1JLL9NxeyvqhLnDGcMD8MM20H9p",
+        "start": "2019-04-03T23:27:58.111176+11:00",
+        "end": "2019-04-04T00:27:58.111176+11:00",
+        "assignee": {
+          "id": "1JLL9JT5NrGvUQT0bLALl647j0f",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-03T16:27:58.11122+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-03T16:27:58.11122+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "1JLL9NxeyvqhLnDGcMD8MM20H9p",
+        "start": "2019-04-04T00:27:58.111176+11:00",
+        "end": "2019-04-04T01:27:58.111176+11:00",
+        "assignee": {
+          "id": "1JLL9KF5UsIyu6ks5chbeno2Y6P",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-03T16:27:58.111222+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-03T16:27:58.111223+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "1JLL9NxeyvqhLnDGcMD8MM20H9p",
+        "start": "2019-04-04T01:27:58.111176+11:00",
+        "end": "2019-04-04T02:27:58.111176+11:00",
+        "assignee": {
+          "id": "1JLL9K98Q2W27E19azIFm9UNpMR",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-03T16:27:58.111227+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-03T16:27:58.111228+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      }
+    ]
+  },
+  {
+    "id": "test",
+    "name": "blah",
+    "shifts": [
+      {
+        "rosterId": "test",
+        "start": "2019-04-02T16:27:58.111176+11:00",
+        "end": "2019-04-02T17:27:58.111176+11:00",
+        "assignee": {
+          "id": "1ML1234fYydTSNY9rAh1u6xBXug",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatar": "http://localhost:8080/ronnie.jpg",
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-02T16:27:58.111197+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-02T16:27:58.111197+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "test",
+        "start": "2019-04-02T17:27:58.111176+11:00",
+        "end": "2019-04-02T18:27:58.111176+11:00",
+        "assignee": {
+          "id": "1ML12349JBww7zqiweJhOjPIP1XarE",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatar": "http://localhost:8080/ronnie.jpg",
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-02T16:27:58.111201+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-02T16:27:58.111205+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "test",
+        "start": "2019-04-02T18:27:58.111176+11:00",
+        "end": "2019-04-02T19:27:58.111176+11:00",
+        "assignee": {
+          "id": "1ML12349M0bzZ7tmcJ1MI3FdSJhk0y",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatar": "http://localhost:8080/ronnie.jpg",
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-02T16:27:58.111208+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-02T16:27:58.111208+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "test",
+        "start": "2019-04-02T19:27:58.111176+11:00",
+        "end": "2019-04-02T20:27:58.111176+11:00",
+        "assignee": {
+          "id": "1ML12349IhxKj9UDVlgfeoEWnk1Zi8",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatar": "http://localhost:8080/ronnie.jpg",
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-02T16:27:58.11121+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-02T16:27:58.111211+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "test",
+        "start": "2019-04-02T20:27:58.111176+11:00",
+        "end": "2019-04-02T21:27:58.111176+11:00",
+        "assignee": {
+          "id": "1ML12349MBvVNox1v1cd5hqFiLoqvv",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatar": "http://localhost:8080/ronnie.jpg",
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-02T16:27:58.111213+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-02T16:27:58.111213+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "test",
+        "start": "2019-04-02T21:27:58.111176+11:00",
+        "end": "2019-04-02T22:27:58.111176+11:00",
+        "assignee": {
+          "id": "1ML12349OSrgUY1xCOU4FsCXxkBQvn",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatar": "http://localhost:8080/ronnie.jpg",
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-02T16:27:58.111215+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-02T16:27:58.111215+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "test",
+        "start": "2019-04-02T22:27:58.111176+11:00",
+        "end": "2019-04-02T23:27:58.111176+11:00",
+        "assignee": {
+          "id": "1ML12349LrkhCdCmEfOrfVhnx5IslP",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatar": "http://localhost:8080/ronnie.jpg",
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-02T16:27:58.111218+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-02T16:27:58.111218+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "test",
+        "start": "2019-04-02T23:27:58.111176+11:00",
+        "end": "2019-04-04T00:27:58.111176+11:00",
+        "assignee": {
+          "id": "1ML12349JT5NrGvUQT0bLALl647j0f",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatar": "http://localhost:8080/ronnie.jpg",
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-02T16:27:58.11122+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-02T16:27:58.11122+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "test",
+        "start": "2019-04-04T00:27:58.111176+11:00",
+        "end": "2019-04-04T01:27:58.111176+11:00",
+        "assignee": {
+          "id": "1ML12349KF5UsIyu6ks5chbeno2Y6P",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "avatar": "http://localhost:8080/ronnie.jpg",
+          "notes": [],
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-02T16:27:58.111222+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-02T16:27:58.111223+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      },
+      {
+        "rosterId": "test",
+        "start": "2019-04-04T01:27:58.111176+11:00",
+        "end": "2019-04-04T02:27:58.111176+11:00",
+        "assignee": {
+          "id": "1ML12349K98Q2W27E19azIFm9UNpMR",
+          "firstName": "ronnie",
+          "lastName": "osullivan",
+          "displayName": "Rocket Ronnie",
+          "notes": [],
+          "avatar": "http://localhost:8080/ronnie.jpg",
+          "avatarUrl": {
+            "Scheme": "http",
+            "Opaque": "",
+            "User": null,
+            "Host": "localhost:8080",
+            "Path": "/ronnie.jpg",
+            "RawPath": "",
+            "ForceQuery": false,
+            "RawQuery": "",
+            "Fragment": ""
+          }
+        },
+        "notes": [
+          {
+            "date": "2019-04-02T16:27:58.111227+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          },
+          {
+            "date": "2019-04-02T16:27:58.111228+11:00",
+            "note": "aGVsbG9cbldvcmxkISEK"
+          }
+        ],
+        "userRole": "snooker player"
+      }
+    ]
+  }
+]
